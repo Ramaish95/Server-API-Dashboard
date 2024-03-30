@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./dhan.css">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script>
+
+$( document ).ready(function() {
+ 
+function CallServerAPI(Instnace,url,InstanceId,count,ServerName){
+   // alert(Instnace);
+    fetch(url)
+    .then(response => {
+    var tableData1;    var tableData2;    var tableData3;    var tableData4;    var tableData5;    var ZcnColor;
+    if (response.ok) {
+		console.log(Instnace+" Response OK");
+        //alert("Dev API");
+            console.log(response.status);
+            ZColor="style='color:green'";
+            
+            if(count==1){
+                /*Adding Instance Name only First Time*/
+                $(InstanceId).append("<span "+ZColor+"> "+ Instnace +"</span>");
+
+                tableData1= "<div style='color:green'>"+ServerName+"</div>";
+                $(InstanceId+'ip'+count).append(tableData1);
+            }            
+            if(count==2){
+                tableData2= "<div style='color:green'>"+ServerName+"</div>";
+                $(InstanceId+'ip'+count).append(tableData2);
+            } 
+            if(count==3)
+            {
+                tableData3= "<div style='color:green'>"+ServerName+"</div>";
+                $(InstanceId+'ip'+count).append(tableData3);
+            } 
+            if(count==4){
+                tableData4= "<div style='color:green'>"+ServerName+"</div>";
+                $(InstanceId+'ip4').append(tableData4);
+            } 
+            if(count==5){
+                tableData5= "<div style='color:green'>"+ServerName+"</div>";
+                $(InstanceId+'ip5').append(tableData5);
+            } 
+          
+      return response.json(); // Parse the response data as JSON
+    } else {
+            console.log(Instnace+" Response Not OK")
+            ZColor="style='color:red'";
+            
+            if(count==1){
+                /*Adding Instance Name only First Time*/
+                //$(InstanceId).append("<span "+ZcnColor+"> "+ Instnace +"</span>");
+                $(InstanceId).replaceWith("<span "+ZColor+"> "+ Instnace +' &#8595;'+"</span>")
+                tableData1= "<div style='color:red'>"+ServerName+"</div>";
+                $(InstanceId+'ip'+count).append(tableData1);
+            }            
+            if(count==2){
+                $(InstanceId).replaceWith("<span "+ZColor+"> "+ Instnace +' &#8595;'+"</span>")
+
+                tableData2= "<div style='color:red'>"+ServerName+"</div>";
+                $(InstanceId+'ip'+count).append(tableData2);
+            } 
+            if(count==3)
+            {
+                $(InstanceId).replaceWith("<span "+ZColor+"> "+ Instnace +' &#8595;'+"</span>")
+                tableData3= "<div style='color:red'>"+ServerName+"</div>";
+                $(InstanceId+'ip'+count).append(tableData3);
+            } 
+            if(count==4){
+                $(InstanceId).replaceWith("<span "+ZColor+"> "+ Instnace +' &#8595;'+"</span>")
+                tableData4= "<div style='color:red'>"+ServerName+"</div>";
+                $(InstanceId+'ip4').append(tableData4);
+            } 
+            if(count==5){
+                $(InstanceId).replaceWith("<span "+ZColor+"> "+ Instnace +' &#8595;'+"</span>")
+                tableData5= "<div style='color:red'>"+ServerName+"</div>";
+                $(InstanceId+'ip5').append(tableData5);
+            } 
+            //throw new Error('API request failed');
+      return response.json();
+    }
+  })
+
+                
+}
+/**********************************Calling Servers API's: Start*********************************/
+/*Parametrs(1.Instance Name, 2. API, 3.InstanceId,4.Count of the instance, Display Server Name)*/
+CallServerAPI("Dev",'https://dummyjson.com/products/categories','#devzcnfe',1,'eladv01');
+CallServerAPI("Dev",'https://dummyjson.com/products/categories1','#devzcnfe',2,'eladv02');
+
+
+CallServerAPI("Stage",'https://dummyjson.com/products/1','#stagezcnfe',1,'eladv01');
+CallServerAPI("Stage",'https://dummyjson.com/products/1','#stagezcnfe',2,'neladv02');
+
+
+CallServerAPI("Prod",'https://dummyjson.com/products/categories','#prodzcnfe',1,'eladv01');
+CallServerAPI("Prod",'https://dummyjson.com/products/categories1','#prodzcnfe',2,'neladv02');
+CallServerAPI("Prod",'https://dummyjson.com/products/categories1','#prodzcnfe',3,'neladv03');
+/**********************************Calling Servers API's: Start*********************************/
+
+});
+
+</script>
+</head>
+<body>
+	<header>   
+           <!--- <img align='left' src="https://dhan.ai/wp-content/uploads/2022/05/Dhan-logo.png" alt="Dhan Logo"> -->
+            <img align='left' src= "https://w7.pngwing.com/pngs/589/851/png-transparent-dashboard-computer-icons-computer-software-system-others-miscellaneous-blue-angle-thumbnail.png" alt="Dhan Logo">
+            <h1> My Dashboard</h1>
+    </header>
+	
+<div id="MetaTableData" ></div>
+<dev id="table-container"></dev>
+<dev class="main"> 
+    
+    <table class="parenttable"> 
+        <tr class="projNames">
+        <th></th>
+        <th></th> 
+        <th></th>
+        </tr>  
+     <!-- ----------------ZCN Front End: Start------------------- -->  
+        <tr> 
+        
+            <td>           
+                <!-- ---------:ZCN Front End: Start------------------- -->
+                <table class="maintable">
+                    <tr class="tableHeading">
+                        <th> My FE</th>                             
+                    </tr>
+            
+                    <tr class="zcnfedev">
+                        <th id="tHeading1">
+                            <div id='devzcnfe1' class="tooltip"> <span id='devzcnfe'> </span><!-- Here 'Dev' Will come in Display-->
+                                <span class="tooltiptext"><div id='devzcnfeip1'></div><div id='devzcnfeip2'></div><div id='devzcnfeip3'></div></span>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr class="zcnfestage">
+                        <th id="tHeading1">
+                            <div id="stagezcnfe1" class="tooltip"><span id='stagezcnfe'> </span> <!-- Here 'Stage' Will come in Display-->
+                                <span class="tooltiptext"><div id='stagezcnfeip1'></div><div id='stagezcnfeip2'></div></span>
+                            </div>
+                        </th>
+                        </th>
+                    </tr>
+                    <tr class="zcnfeprod">
+                        <th>
+                            <div id="prodzcnfe1" class="tooltip"> <span id='prodzcnfe'> </span><!-- Here 'Prod' Will come in Display-->
+                                <span class="tooltiptext"><div id='prodzcnfeip1'></div><div id='prodzcnfeip2'></div><div id='prodzcnfeip3'> </div></span>
+                            </div>
+                        </th>
+                    </tr>                  
+                </table> 
+                <!-- ---------: ZCN Front End: End------------------- -->
+            </td>
+            <td>
+                <!-- ---------: ZCN Back End: Start------------------- -->
+                <table class="maintable">
+                    <tr class="tableHeading">
+                        <th> My BE</th>                             
+                    </tr>
+            
+                    <tr class="zcnbedev">
+                        <th id="tHeading1">
+                            <div id='devzcnbe1' class="tooltip"> <span id='devzcnbe'>Dev</span><!-- Here 'Dev' Will come in Display-->
+                                <span class="tooltiptext"><div id='devzcnbeip1'></div></span>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr class="zcnbestage">
+                        <th id="tHeading1">
+                            <div id="stagezcnbe1" class="tooltip"> <span id='stagezcnbe'>Stage</span><!-- Here 'Stage' Will come in Display-->
+                                <span class="tooltiptext"><div id='stagezcnbeip1'></div><div id='stagezcnbeip2'></div></span>
+                            </div>
+                        </th>
+                        </th>
+                    </tr>
+                    <tr class="zcnbeprod">
+                        <th>
+                            <div id="prodzcnbe1" class="tooltip"> <span id='prodzcnbe'>Prod</span><!-- Here 'Prod' Will come in Display-->
+                                <span class="tooltiptext"><div id='prodzcnbeip1'></div><div id='prodzcnbeip2'></div><div id='prodzcnbeip3'> </div></span>
+                            </div>
+                        </th>
+                    </tr>                  
+                </table> 
+                <!-- ---------:ZCN back End: Start------------------- -->
+            </td>
+            <td>
+                <!-- ---------: ZCN Kafka: Start------------------- -->
+                <table class="maintable">
+                    <tr class="tableHeading">
+                        <th> My KAFKA</th>                             
+                    </tr>
+            
+                    <tr class="zcnkafkadev">
+                        <th id="tHeading1">
+                            <div id='devzcnkafka' class="tooltip"> Dev<!-- Here 'Dev' Will come in Display-->
+                                <span class="tooltiptext"><div id='devzcnkafkaip1'></div></span>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr class="zcnkafkastage">
+                        <th id="tHeading1">
+                            <div id="stagezcnkafka" class="tooltip"> Stage<!-- Here 'Stage' Will come in Display-->
+                                <span class="tooltiptext"><div id='stagezcnkafkaip1'></div><div id='stagezcnkafkaip2'></div></span>
+                            </div>
+                        </th>
+                        </th>
+                    </tr>
+                    <tr class="zcnkafkaprod">
+                        <th>
+                            <div id="prodzcnkafka" class="tooltip"> Prod<!-- Here 'Prod' Will come in Display-->
+                                <span class="tooltiptext"><div id='prodzcnkafkaip1'></div><div id='prodzcnkafkaip2'></div><div id='prodzcnkafkaip3'> </div></span>
+                            </div>
+                        </th>
+                    </tr>                  
+                </table> 
+                <!-- ---------PROD:ZCN Front End: End------------------- -->
+            </td>
+       
+        </tr>
+     <!-- ----------------ZCN Front End: Start------------------- -->   
+    
+    </table>   
+</div>
+
+</body>
+</html>
